@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>River 3D</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+		    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+			body {
+				color: #ffffff;
+				font-family:Monospace;
+				font-size:13px;
+				font-weight: bold;
+
+				background-color: #000000;
+				margin: 0px;
+				overflow: hidden;
+			}
+			#info {
+				color: #fff;
+				position: absolute;
+				top: 25px; 
+				left: 2px;
+				width: 63px;
+				padding: 5px;
+				z-index:100;
+				text-shadow:
+				   -2px -2px 0 #000,  
+				    1px -1px 0 #000,
+				    -1px 1px 0 #000,
+				     1px 1px 0 #000;
+
+			}
+			a { color: #ff0000 }
+
+		    div.controls {width:1000px; height:60px; float:left; margin: 0 0 0 100px;}
+		    div.controls div {width: 90px; height:45px; float:left;}
+
+		    canvas.ui {
+		    	/*border:1px solid #FFAAAA;*/
+		    	position: absolute;
+		    	top: 100px;
+		    	left: 50px;
+		    	z-index: 1000;
+		    }
+
+		</style>
+
+		<script src="js/three.min.js"></script>
+		<script src="js/Detector.js"></script>
+		<script src="js/stats.min.js"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/MersenneTwister.js"></script>
+
+
+		<script src="../jslibs/utils.js"></script>
+		<script src="../jslibs/class.js"></script>
+		<script src="../jslibs/vector.js"></script>
+		<script src="../jslibs/3Dplot.js"></script>
+		<script src="../jslibs/color.js"></script>
+		<script src="../jslibs/complex.js"></script>
+		
+	</head>
+
+	<body>
+		<div id="info" style="width: 63px;">River</div>
+
+		<div class="controls">
+
+			curves: <input id="curves" type="text" size="4" value="150" init="150" min="0"   max="1000">
+			floor:  <input id="floor"  type="text" size="4" value="15"  init="15"  min="0"   max="30">
+			size:   <input id="size"   type="text" size="4" value="100" init="100" min="100" max="300" >
+			detail: <input id="detail" type="text" size="4" value="10"   init="5"   min="1"   max="size/10"> 
+		    <input id="makeRiver" type="button" Value="New River"   onclick="newRiverUI3d()"/>
+
+		</div>
+<center>
+		<div id="container"><div style="float:left;width:150px;height:150px;"></div></div>		
+</center>
+
+		<script type="x-shader/x-vertex" id="vertexshader">
+			uniform float amplitude;
+			attribute float size;
+			attribute vec4 customColor;
+
+			varying vec4 vColor;
+
+			void main() {
+				vColor = customColor;
+				vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+
+				gl_PointSize = size;
+				gl_Position = projectionMatrix * mvPosition;
+			}
+		</script>
+
+
+		<script type="x-shader/x-fragment" id="fragmentshader">
+			uniform sampler2D texture;
+
+			varying vec4 vColor;
+
+			void main() {
+				gl_FragColor = vColor;
+				gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );
+			}
+		</script>
+
+
+		<script src="js/renderer.js"></script>
+		<script src="js/riverfunction.js"></script>
+		<script>setupDoubleView()</script>
+
+</body>
+
+</html>
