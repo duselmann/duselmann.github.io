@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Obitals webgl - three.js [particles]</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+		    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+			body {
+				color: #ffffff;
+				font-family:Monospace;
+				font-size:13px;
+				font-weight: bold;
+
+				background-color: #000000;
+				margin: 0px;
+				overflow: hidden;
+			}
+			#info {
+				color: #fff;
+				position: absolute;
+				top: 25px; 
+				left: 2px;
+				width: 63px;
+				padding: 5px;
+				z-index:100;
+				text-shadow:
+				   -2px -2px 0 #000,  
+				    1px -1px 0 #000,
+				    -1px 1px 0 #000,
+				     1px 1px 0 #000;
+
+			}
+			a { color: #ff0000 }
+
+		    div.controls {width:1000px; height:60px; float:left; margin: 0 0 0 100px;}
+		    div.controls div {width: 90px; height:45px; float:left;}
+
+		    canvas.ui {
+		    	/*border:1px solid #FFAAAA;*/
+		    	position: absolute;
+		    	top: 100px;
+		    	left: 50px;
+		    	z-index: 1000;
+		    }
+
+		</style>
+
+		<script src="js/three.min.js"></script>
+		<script src="js/Detector.js"></script>
+		<script src="js/stats.min.js"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/MersenneTwister.js"></script>
+
+
+		<script src="jslibs/utils.js"></script>
+		<script src="jslibs/class.js"></script>
+		<script src="jslibs/vector.js"></script>
+		<script src="jslibs/3Dplot.js"></script>
+		<script src="jslibs/color.js"></script>
+		<script src="jslibs/complex.js"></script>
+		<script src="js/wavefunction.js"></script>
+
+	</head>
+
+	<body>
+		<div id="info" style="width: 63px;">Orbitals</div>
+
+		<div class="controls">
+
+
+		  Viewing: <select id="orbital" onchange="window.location.hash=this.value;changeOrbital();" title="Choose the orbital to view. Not all are represented because it is a bit redunant. I have not gotten to all of them yet.">
+		    <option>orbital100</option>
+		    <option>orbital200</option>
+		    <option>orbital210</option>
+		    <option>orbital211</option>
+		    <option>orbital300</option>
+		    <option>orbital310</option>
+		    <option>orbital311</option>
+		    <option>orbital320</option>
+		    <option>orbital321</option>
+		    <option>orbital322</option>
+		    <option>orbital400</option>
+		    <option>orbital411</option>
+		    <option>orbital420</option>
+		    <option>orbital421</option>
+		    <option>orbital430</option>
+		    <option>orbital431</option>
+		    <option>orbital520</option>
+		    <option>orbital600</option>
+		    <option>orbital620</option>
+		    <option>orbital630</option>
+		    <option>orbital640</option>
+		    <option>orbital641</option>
+		  </select><br>
+		  Color by: <select onchange="colorBy(this.value)" title='Highest probablilty is Red, then Blue, ..., Yellow, and finally the lowest is Orange'>
+		    <option>Angle</option>
+		    <option selected="true">Probability</option>
+		    <option>Radius</option>
+		  </select>
+		</div>
+
+		<div id="container"></div>		
+
+
+		<script type="x-shader/x-vertex" id="vertexshader">
+			uniform float amplitude;
+			attribute float size;
+			attribute vec4 customColor;
+
+			varying vec4 vColor;
+
+			void main() {
+				vColor = customColor;
+				vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+
+				gl_PointSize = size;
+				gl_Position = projectionMatrix * mvPosition;
+			}
+		</script>
+
+
+		<script type="x-shader/x-fragment" id="fragmentshader">
+			uniform vec3 color;
+			uniform sampler2D texture;
+
+			varying vec4 vColor;
+
+			void main() {
+				gl_FragColor = vColor;
+				gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );
+			}
+		</script>
+
+
+		<script src="js/orbitals.js"></script>
+
+</body>
+
+</html>
