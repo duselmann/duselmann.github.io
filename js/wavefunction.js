@@ -334,7 +334,7 @@ var orbital322 = function(maxpoints, radius) {
 
 var orbital400 = function(maxpoints, radius) {
 	alphaRatio = 15
-	return orbital(maxpoints,  4*radius, colorByMethod, function(pt){
+	return orbital(maxpoints,  3.3*radius, colorByMethod, function(pt){
 		var Z = 1
 		var n = 2
 		var r = magnitude(pt)
@@ -353,7 +353,7 @@ var orbital400 = function(maxpoints, radius) {
 
 var orbital411 = function(maxpoints, radius) {
 	alphaRatio = 1/2
-	return orbital(maxpoints,  4*radius, colorByMethod, function(pt){
+	return orbital(maxpoints,  2.5*radius, colorByMethod, function(pt){
 		var xy2 = pt.x*pt.x + pt.y*pt.y
 		var rr2 = xy2 + pt.z*pt.z
 		var rr  = sqrt(rr2)
@@ -373,7 +373,7 @@ var orbital411 = function(maxpoints, radius) {
 
 var orbital420 = function(maxpoints, radius) {
 	alphaRatio = 3
-	return orbital(maxpoints, 4*radius, colorByMethod, function(pt){
+	return orbital(maxpoints, 2*radius, colorByMethod, function(pt){
 		var Z   = 2
 		var n   = 4
 		var xy2 = pt.x*pt.x + pt.y*pt.y
@@ -397,7 +397,7 @@ var orbital420 = function(maxpoints, radius) {
 
 var orbital421 = function(maxpoints, radius) {
 	alphaRatio = 1/2
-	return orbital(maxpoints, 4*radius, colorByMethod, function(pt){
+	return orbital(maxpoints, 2*radius, colorByMethod, function(pt){
 		var xy2 = pt.x*pt.x + pt.y*pt.y
 		var rr2 = xy2 + pt.z*pt.z
 		var rr  = sqrt(rr2)
@@ -415,7 +415,7 @@ var orbital421 = function(maxpoints, radius) {
 
 var orbital430 = function(maxpoints, radius) {
 	alphaRatio = 1/2
-	return orbital(maxpoints, 4*radius, colorByMethod, function(pt){
+	return orbital(maxpoints, 3*radius, colorByMethod, function(pt){
 		var xy2 = pt.x*pt.x + pt.y*pt.y
 		var rr2 = xy2 + pt.z*pt.z
 		var rr  = sqrt(rr2)
@@ -433,7 +433,7 @@ var orbital430 = function(maxpoints, radius) {
 
 var orbital431 = function(maxpoints, radius) {
 	alphaRatio = 1
-	return orbital(maxpoints, 4*radius, colorByMethod, function(pt){
+	return orbital(maxpoints, 2.5*radius, colorByMethod, function(pt){
 		var xy2 = pt.x*pt.x + pt.y*pt.y
 		var rr2 = xy2 + pt.z*pt.z
 		var rr  = sqrt(rr2)
@@ -452,7 +452,7 @@ var orbital431 = function(maxpoints, radius) {
 
 var orbital520 = function(maxpoints, radius) {
 	alphaRatio = 5
-	return orbital(maxpoints, 5*radius, colorByMethod, function(pt){
+	return orbital(maxpoints, 3.3*radius, colorByMethod, function(pt){
 		var Z   = 2
 		var n   = 5
 		var xy2 = pt.x*pt.x + pt.y*pt.y
@@ -481,7 +481,7 @@ var orbital520 = function(maxpoints, radius) {
 
 var orbital600 = function(maxpoints, radius) {
 	alphaRatio = 20
-	return orbital(maxpoints,  6*radius, colorByMethod, function(pt){
+	return orbital(maxpoints,  4.5*radius, colorByMethod, function(pt){
 		var Z = 2
 		var n = 6
 		var r = magnitude(pt)
@@ -499,7 +499,7 @@ var orbital600 = function(maxpoints, radius) {
 
 var orbital620 = function(maxpoints, radius) {
 	alphaRatio = 3
-	return orbital(maxpoints, 6*radius, colorByMethod, function(pt){
+	return orbital(maxpoints, 5*radius, colorByMethod, function(pt){
 		var Z   = 2
 		var n   = 6
 		var xy2 = pt.x*pt.x + pt.y*pt.y
@@ -526,7 +526,7 @@ var orbital620 = function(maxpoints, radius) {
 //√(7/4) × z(5z2 - 3r2)/r3 × (1/4π)1/2
 var orbital630 = function(maxpoints, radius) {
 	alphaRatio = 1
-	return orbital(maxpoints, 6*radius, colorByMethod, function(pt){
+	return orbital(maxpoints, 4.75*radius, colorByMethod, function(pt){
 		var Z = 2
 		var n = 6
 		var r = magnitude(pt)
@@ -543,7 +543,7 @@ var orbital630 = function(maxpoints, radius) {
 }
 var orbital640 = function(maxpoints, radius) {
 	alphaRatio = 1
-	return orbital(maxpoints, 6*radius, colorByMethod, function(pt){
+	return orbital(maxpoints, 4.75*radius, colorByMethod, function(pt){
 		var Z = 2
 		var n = 6
 		var r = magnitude(pt)
@@ -565,7 +565,7 @@ var orbital640 = function(maxpoints, radius) {
 //k × xz(4z2 - 3x2 - 3y2)/r4 × (1/4π)1/2
 var orbital641 = function(maxpoints, radius) {
 	alphaRatio = .75
-	return orbital(maxpoints, 6*radius, colorByMethod, function(pt){
+	return orbital(maxpoints, 4.75*radius, colorByMethod, function(pt){
 		var Z = 2
 		var n = 6
 		var r = magnitude(pt)
