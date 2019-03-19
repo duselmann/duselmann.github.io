@@ -94,7 +94,7 @@ function init() {
 
 	renderer = new THREE.WebGLRenderer();
 	renderer.setSize( WIDTH, HEIGHT );
-	renderer.setClearColor(0x222222)
+	renderer.setClearColor(0x000000)
 
 	var container = document.getElementById( 'container' );
 	container.appendChild( renderer.domElement );
