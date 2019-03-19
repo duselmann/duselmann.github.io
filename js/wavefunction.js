@@ -190,7 +190,7 @@ var magnitude = function(pt) {
 }
 
 var orbital100 = function(maxpoints, radius) {
-	alphaRatio = 1/2
+	alphaRatio = 1
 	return orbital(maxpoints,  radius, colorByMethod, function(pt){
 		var r = magnitude(pt)
 		var alpha = 2*abs(exp(-r))
@@ -207,7 +207,7 @@ var orbital200 = function(maxpoints, radius) {
 	})
 }
 var orbital210 = function(maxpoints, radius) {
-	alphaRatio = .75
+	alphaRatio = 1
 	return orbital(maxpoints,  2*radius, colorByMethod, function(pt){
 		var Z = 1
 		var n = 2
@@ -225,7 +225,7 @@ var orbital210 = function(maxpoints, radius) {
 }
 
 var orbital211 = function(maxpoints, radius) { // ? 211
-	alphaRatio = .75
+	alphaRatio = 1
 	return orbital(maxpoints, 2*radius, colorByMethod, function(pt){
 		var Z = 1
 		var n = 2
@@ -244,7 +244,7 @@ var orbital211 = function(maxpoints, radius) { // ? 211
 
 
 var orbital300 = function(maxpoints, radius) {
-	alphaRatio = 1.5
+	alphaRatio = 10
 	return orbital(maxpoints, 3*radius, colorByMethod, function(pt){
 		var r = magnitude(pt)
 		var alpha = abs( exp(-r/3) * (27-18*r+2*r*r) ) / 7
@@ -253,7 +253,7 @@ var orbital300 = function(maxpoints, radius) {
 }
 
 var orbital310 = function(maxpoints, radius) {
-	alphaRatio = 1/2
+	alphaRatio = 1
 	return orbital(maxpoints, 3*radius, colorByMethod, function(pt){
 		var r = magnitude(pt)
 		var costheta = pt.z/r
@@ -263,7 +263,7 @@ var orbital310 = function(maxpoints, radius) {
 }
 
 var orbital311 = function(maxpoints, radius) {
-	alphaRatio = 1/2
+	alphaRatio = 1
 	return orbital(maxpoints, 3*radius, colorByMethod, function(pt){
 		var xy2 = pt.x*pt.x + pt.y*pt.y
 		var rr2 = xy2 + pt.z*pt.z
@@ -280,7 +280,7 @@ var orbital311 = function(maxpoints, radius) {
 }
 
 var orbital320 = function(maxpoints, radius) {
-	alphaRatio = 1/2
+	alphaRatio = 10
 	return orbital(maxpoints, 3*radius, colorByMethod, function(pt){
 		var xy2 = pt.x*pt.x + pt.y*pt.y
 		var rr2 = xy2 + pt.z*pt.z
@@ -296,7 +296,7 @@ var orbital320 = function(maxpoints, radius) {
 
 
 var orbital321 = function(maxpoints, radius) {
-	alphaRatio = 1/2
+	alphaRatio = 1
 	return orbital(maxpoints,  3*radius, colorByMethod, function(pt){
 		var xy2 = pt.x*pt.x + pt.y*pt.y
 		var rr2 = xy2 + pt.z*pt.z
@@ -314,7 +314,7 @@ var orbital321 = function(maxpoints, radius) {
 
 
 var orbital322 = function(maxpoints, radius) {
-	alphaRatio = 1/2
+	alphaRatio = 1
 	return orbital(maxpoints,  3*radius, colorByMethod, function(pt){
 		var xy2 = pt.x*pt.x + pt.y*pt.y
 		var rr2 = xy2 + pt.z*pt.z
@@ -333,8 +333,8 @@ var orbital322 = function(maxpoints, radius) {
 
 
 var orbital400 = function(maxpoints, radius) {
-	alphaRatio = 15
-	return orbital(maxpoints,  3.3*radius, colorByMethod, function(pt){
+	alphaRatio = 50
+	return orbital(maxpoints,  3.25*radius, colorByMethod, function(pt){
 		var Z = 1
 		var n = 2
 		var r = magnitude(pt)
@@ -352,7 +352,7 @@ var orbital400 = function(maxpoints, radius) {
 
 
 var orbital411 = function(maxpoints, radius) {
-	alphaRatio = 1/2
+	alphaRatio = 10
 	return orbital(maxpoints,  2.5*radius, colorByMethod, function(pt){
 		var xy2 = pt.x*pt.x + pt.y*pt.y
 		var rr2 = xy2 + pt.z*pt.z
@@ -372,8 +372,8 @@ var orbital411 = function(maxpoints, radius) {
 
 
 var orbital420 = function(maxpoints, radius) {
-	alphaRatio = 3
-	return orbital(maxpoints, 2*radius, colorByMethod, function(pt){
+	alphaRatio = 15
+	return orbital(maxpoints, 2.2*radius, colorByMethod, function(pt){
 		var Z   = 2
 		var n   = 4
 		var xy2 = pt.x*pt.x + pt.y*pt.y
@@ -396,7 +396,7 @@ var orbital420 = function(maxpoints, radius) {
 
 
 var orbital421 = function(maxpoints, radius) {
-	alphaRatio = 1/2
+	alphaRatio = 10
 	return orbital(maxpoints, 2*radius, colorByMethod, function(pt){
 		var xy2 = pt.x*pt.x + pt.y*pt.y
 		var rr2 = xy2 + pt.z*pt.z
@@ -414,7 +414,7 @@ var orbital421 = function(maxpoints, radius) {
 }
 
 var orbital430 = function(maxpoints, radius) {
-	alphaRatio = 1/2
+	alphaRatio = 10
 	return orbital(maxpoints, 3*radius, colorByMethod, function(pt){
 		var xy2 = pt.x*pt.x + pt.y*pt.y
 		var rr2 = xy2 + pt.z*pt.z
@@ -480,7 +480,7 @@ var orbital520 = function(maxpoints, radius) {
 // (1/2160√6) × (720 - 1800ρ + 1200ρ2 - 300ρ3 + 30ρ4 - ρ5) × Z3/2 × e-ρ/2
 
 var orbital600 = function(maxpoints, radius) {
-	alphaRatio = 20
+	alphaRatio = 1000 // what? not sure why.
 	return orbital(maxpoints,  4.5*radius, colorByMethod, function(pt){
 		var Z = 2
 		var n = 6
@@ -498,7 +498,7 @@ var orbital600 = function(maxpoints, radius) {
 
 
 var orbital620 = function(maxpoints, radius) {
-	alphaRatio = 3
+	alphaRatio = 15
 	return orbital(maxpoints, 5*radius, colorByMethod, function(pt){
 		var Z   = 2
 		var n   = 6
@@ -525,7 +525,7 @@ var orbital620 = function(maxpoints, radius) {
 // (1/300√70) × (8 - ρ)ρ3 × Z3/2 × e-ρ/2
 //√(7/4) × z(5z2 - 3r2)/r3 × (1/4π)1/2
 var orbital630 = function(maxpoints, radius) {
-	alphaRatio = 1
+	alphaRatio = 30
 	return orbital(maxpoints, 4.75*radius, colorByMethod, function(pt){
 		var Z = 2
 		var n = 6
