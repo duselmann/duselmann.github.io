@@ -28,7 +28,37 @@ function getContext(canvasId) {
     return canvas;
 }
 
-var max = 1000;
+var max = 100*6;
+
+function makeColor(count) {
+    function makePart(count, max) {
+        return Math.floor((count/max) * 255.0)
+    }
+    var color = {
+        red   : 0,
+        green : 0,
+        blue  : 0,
+    };
+    if (count == max) {
+        return color;
+    }
+    var clrMod = 50;
+
+    count %= clrMod
+
+    if ((count) < clrMod/6*2) {
+        color.red = 255-makePart(count, clrMod/6*2);
+        color.green = makePart(count, clrMod/6*2);
+    } else if ((count) < clrMod/6*3) {
+        color.green = 255-makePart(count-clrMod/6*3, clrMod/6*2);
+        color.blue = makePart(count-clrMod/6, clrMod/6*2);
+    } else if ((count) < clrMod/6*4) {
+        color.blue = 255-makePart(count-max/6*4, clrMod/6*2);
+        color.red = makePart(count-clrMod/6*4, clrMod/6*2);
+    }
+
+    return color;
+}
 
 function doPlot(canvas) {
     for (var x=0; x<canvas.width; x++) {
@@ -36,8 +66,8 @@ function doPlot(canvas) {
         for (var y=0; y<canvas.height; y++) {
             var cb = 1.5 - y / canvas.height * 3;
             var count = mandelbrot(ca, cb, max);
-            var red = (count == max) ?0 :Math.abs((255-20*(count+1)) % 255)
-            canvas.plotColor(x, y, red, 0, 0, 255);
+            var color = makeColor(count);
+            canvas.plotColor(x, y, color.red, color.green, color.blue, 255);
         }
     }
     canvas.putImageData();
